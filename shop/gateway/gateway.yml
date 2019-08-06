@@ -12,11 +12,8 @@ server:
     direct-buffers: true
 
 spring:
-  mvc:
-    view:
-      prefix: /templates/
+  webflux:
     static-path-pattern: /static/**
-    throw-exception-if-no-handler-found: true
   freemarker:
     suffix: .html
   cloud:

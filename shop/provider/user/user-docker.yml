@@ -2,6 +2,8 @@ mysql:
   host: docker.for.mac.host.internal
 
 spring:
+  profiles:
+    active: prod
   datasource:
     druid:
       username: well

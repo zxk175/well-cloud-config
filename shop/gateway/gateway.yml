@@ -12,8 +12,6 @@ server:
     direct-buffers: true
 
 spring:
-  webflux:
-    static-path-pattern: /static/**
   freemarker:
     suffix: .html
   cloud:

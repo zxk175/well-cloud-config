@@ -13,8 +13,6 @@ server:
     direct-buffers: true
 
 spring:
-  application:
-    name: eureka-server
   mvc:
     throw-exception-if-no-handler-found: true
   security:

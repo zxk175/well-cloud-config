@@ -12,6 +12,8 @@ server:
     direct-buffers: true
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
   freemarker:
     suffix: .html
   cloud:

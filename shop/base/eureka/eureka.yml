@@ -29,14 +29,14 @@ eureka:
         name: ${spring.security.user.name}
         password: ${spring.security.user.password}
   server:
-    # false表示eureka服务器关闭自我保护模式
+    # 关闭自我保护模式
     enable-self-preservation: false
-    # eureka server清理无效节点的时间间隔
-    eviction-interval-timer-in-ms: 5000
+    # 清理无效节点的时间间隔
+    eviction-interval-timer-in-ms: 3000
   client:
-    # 是否将自己注册到服务中心，默认为true
+    # 是否将自己注册到服务中心，默认true
     register-with-eureka: true
-    # 是否从服务中心获取注册信息，默认为true
+    # 是否从服务中心获取注册信息，默认true
     fetch-registry: false
     serviceUrl:
       defaultZone: http://root:root@well-eureka:8001/eureka

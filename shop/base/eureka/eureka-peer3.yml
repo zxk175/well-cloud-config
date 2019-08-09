@@ -9,6 +9,9 @@ eureka:
   instance:
     hostname: peer3
     prefer-ip-address: true
+  server:
+    # 开启自我保护模式
+    enable-self-preservation: true
   client:
     register-with-eureka: false
     serviceUrl:

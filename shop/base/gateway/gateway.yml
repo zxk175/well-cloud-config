@@ -24,7 +24,7 @@ spring:
           predicates:
             - Path=/user/**
           filters:
-            - StripPrefix=1
+            - RewritePath=/user/(?<segment>.*), /$\{segment}
 
 eureka:
   instance:

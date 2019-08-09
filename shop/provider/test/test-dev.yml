@@ -1,0 +1,10 @@
+mysql:
+  host: 127.0.0.1
+
+spring:
+  profiles:
+    active: dev
+
+logging:
+  level:
+    root: info

@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: prod
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${eureka.list}

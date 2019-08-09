@@ -1,4 +1,3 @@
-# 汉化参考：https://gitee.com/ifaxin/eureka-server-hans
 server:
   port: 8001
   use-forward-headers: true

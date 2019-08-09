@@ -26,6 +26,13 @@ spring:
           filters:
             - RewritePath=/user/(?<segment>.*), /$\{segment}
 
+        - id: provider-test
+          uri: lb://PROVIDER-TEST
+          predicates:
+            - Path=/test/**
+          filters:
+            - RewritePath=/test/(?<segment>.*), /$\{segment}
+
 eureka:
   instance:
     prefer-ip-address: true

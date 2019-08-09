@@ -24,8 +24,7 @@ spring:
           predicates:
             - Path=/user/**
           filters:
-            - MySwaggerHeaderFilter
-            - RewritePath=/user/(?<segment>.*), /$\{segment}
+            - StripPrefix=1
 
 eureka:
   instance:

@@ -17,11 +17,6 @@ spring:
     sampler:
       probability: 1.0
 
-mybatis-plus:
-  configuration:
-    # 打印sql语句,调试用
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
 eureka:
   client:
     service-url:

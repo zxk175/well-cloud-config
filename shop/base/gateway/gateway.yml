@@ -24,14 +24,14 @@ spring:
           predicates:
             - Path=/user/**
           filters:
-            - RewritePath=/user/(?<segment>.*), /$\{segment}
+            - StripPrefix=1
 
         - id: provider-test
           uri: lb://PROVIDER-TEST
           predicates:
             - Path=/test/**
           filters:
-            - RewritePath=/test/(?<segment>.*), /$\{segment}
+            - StripPrefix=1
 
 eureka:
   instance:

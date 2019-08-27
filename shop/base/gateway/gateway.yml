@@ -30,6 +30,17 @@ spring:
                 name: fallbackcmd
                 fallbackUri: 'forward:/fallback'
 
+        - id: provider-test
+          uri: lb://PROVIDER-TEST
+          predicates:
+            - Path=/test/**
+          filters:
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: 'forward:/fallback'
+
 eureka:
   instance:
     prefer-ip-address: true

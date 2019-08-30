@@ -1,5 +1,5 @@
 mysql:
-  port: 3306
+  port: 23306
   db: well_data
 
 server:

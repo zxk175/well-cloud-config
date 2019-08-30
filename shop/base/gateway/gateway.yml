@@ -18,6 +18,11 @@ spring:
     suffix: .html
   cloud:
     gateway:
+      default-filters:
+        - name: Hystrix
+          args:
+            name: fallbackcmd
+            fallbackUri: "forward:/fallback"
       discovery:
         locator:
           enabled: true

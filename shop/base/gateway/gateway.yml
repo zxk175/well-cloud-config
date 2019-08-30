@@ -23,20 +23,6 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-      routes:
-        - id: provider-user
-          uri: lb://PROVIDER-USER
-          predicates:
-            - Path=/user/**
-          filters:
-            - StripPrefix=1
-
-        - id: provider-test
-          uri: lb://PROVIDER-TEST
-          predicates:
-            - Path=/test/**
-          filters:
-            - StripPrefix=1
 
 eureka:
   instance:

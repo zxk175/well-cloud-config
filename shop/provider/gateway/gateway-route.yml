@@ -3,7 +3,7 @@ mysql:
   db: well_data
 
 server:
-  port: 9000
+  port: 9010
   use-forward-headers: true
   undertow:
     io-threads: 4

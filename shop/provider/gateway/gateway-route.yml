@@ -1,0 +1,93 @@
+mysql:
+  port: 23306
+  db: well_data
+
+server:
+  port: 9000
+  use-forward-headers: true
+  undertow:
+    io-threads: 4
+    buffer-size: 1024
+    worker-threads: 20
+    direct-buffers: true
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  freemarker:
+    suffix: .html
+  cloud:
+    gateway:
+      default-filters:
+        - name: Hystrix
+          args:
+            name: fallbackcmd
+            fallbackUri: "forward:/fallback"
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123456
+      jdbc-url: jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.db}?useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai&autoReconnect=true&autoReconnectForPools=true&failOverReadOnly=false
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.zxk175.well.**.entity.**
+  global-config:
+    db-config:
+      # id生成类型
+      id-type: id_worker
+      # 全局表为下划线命名设置
+      table-underline: true
+      # 逻辑已删除值(默认为 1)
+      logic-delete-value: 0
+      # 逻辑未删除值(默认为 0)
+      logic-not-delete-value: 1
+  configuration:
+    # 配置的缓存的全局开关
+    cache-enabled: true
+    # 延时加载的开关
+    lazy-loading-enabled: true
+    # map映射null值
+    call-setters-on-nulls: true
+    # 开启的话,延时加载一个属性时会加载该对象全部属性
+    # 否则按需加载属性
+    multiple-result-sets-enabled: true
+    # 是否启用下划线与驼峰式命名规则的映射
+    map-underscore-to-camel-case: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    status-page-url: http://127.0.0.1:${server.port}/
+  client:
+    registry-fetch-interval-seconds: 3
+    instance-info-replication-interval-seconds: 3
+    service-url:
+      defaultZone: http://root:root@127.0.0.1:8001/eureka
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            # 断路器超时时间，默认1000ms
+            timeoutInMilliseconds: 5000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env
+  endpoint:
+    health:
+      show-details: ALWAYS
